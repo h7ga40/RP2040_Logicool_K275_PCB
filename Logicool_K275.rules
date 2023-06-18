@@ -1,0 +1,99 @@
+
+(rules PCB Logicool_K275
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 223)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 3.1)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.5)
+    )
+  )
+  (rule
+    (width 125.0)
+    (clear 200.0)
+    (clear 62.5 (type smd_to_turn_gap))
+    (clear 50.0 (type smd-smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-Power" "Via[0-1]_800:400_um" Power
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    Power "Via[0-1]_800:400_um-Power"
+  )
+  (class default
+    "Net-(C1-Pad1)" GP00 GP01 GP02 GP03 GP04 GP05 GP06
+    GP07 "Net-(C6-Pad1)" "Net-(D3-PadA)" D+ "D-" GP08 GP09 /SWCLK
+    RUN BOOTSEL /SWDIO GP10 SDA GP11 SCL "Net-(C2-Pad2)"
+    "Net-(C3-Pad2)" 1.2V GP12 GP13 GP14 GP15 GP16 GP17
+    GP18 "Net-(IC1-Pad21)" GP19 GP20 GP22 GP23 "unconnected-(U4-Pad4)" /A3
+    /A2 /A1 GP29 "Net-(IC1-Pad46)" "Net-(IC1-Pad47)" "/QSPI_DATA[3]" "/QSPI_SCK" "/QSPI_DATA[0]"
+    "/QSPI_DATA[2]" "/QSPI_DATA[1]" "/QSPI_CS"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 125.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 125.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class Power
+    +3V3 GND VBUS
+    (clearance_class Power)
+    (via_rule Power)
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

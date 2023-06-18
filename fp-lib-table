@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "EdgeConnectorLibrary")(type "KiCad")(uri "${KIPRJMOD}/EdgeConnectorLibrary.pretty")(options "")(descr ""))
+)
